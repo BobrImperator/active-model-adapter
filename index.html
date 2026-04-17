@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Demo App</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+
+  <script type="module">
+    import startMirage from './demo-app/mirage';
+    import { App } from './demo-app/app';
+
+    startMirage();
+    App.create({})
+  </script>
+</body>
+
+</html>

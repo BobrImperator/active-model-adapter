@@ -1,0 +1,7 @@
+<template>
+  <ul>
+    {{#each @model as |car|}}
+      <li>{{car.brand}}</li>
+    {{/each}}
+  </ul>
+</template>

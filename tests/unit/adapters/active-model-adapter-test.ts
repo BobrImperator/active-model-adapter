@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { ActiveModelAdapter } from 'active-model-adapter';
-import { TestContext } from 'ember-test-helpers';
+import type { TestContext } from '@ember/test-helpers';
 import AdapterError from '@ember-data/adapter/error';
 import Model from '@ember-data/model';
 

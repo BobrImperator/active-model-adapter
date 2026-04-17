@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import Pretender from 'pretender';
-import { TestContext } from 'ember-test-helpers';
+import type { TestContext } from '@ember/test-helpers';
 
 let pretender: Pretender;
 
@@ -26,7 +26,7 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+     
     pretender = new Pretender(function () {});
     this.owner.register('adapter:application', ApplicationAdapter);
     this.owner.register('serializer:application', ApplicationSerializer);
