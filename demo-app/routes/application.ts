@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { service } from '@ember/service';
+import { inject as service } from '@ember/service';
 import type Store from '@ember-data/store';
 
 export default class Application extends Route {
