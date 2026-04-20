@@ -146,10 +146,10 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     store.push({
       data: {
         type: 'user',
-        id: 1,
+        id: '1',
       },
     });
-    const user = store.peekRecord('user', 1) as User;
+    const user = store.peekRecord('user', '1') as User;
 
     pretender.put('/users/1', function () {
       const response = {
@@ -1055,7 +1055,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     ) as MediocreVillain;
     const assocMinions = await villain.evilMinions;
 
-    assert.equal(assocMinions.get('firstObject.name'), 'Harry');
+    assert.equal(assocMinions.at(0)?.name, 'Harry');
   });
 
   test('when using the DS.EmbeddedRecordsMixin, does not erase attributes for polymorphic embedded models', async function (this: Context, assert) {
@@ -1099,7 +1099,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     ) as MediocreVillain;
     const assocMinions = await villain.evilMinions;
 
-    assert.equal(assocMinions.get('firstObject.name'), 'tom dale');
+    assert.equal(assocMinions.at(0)?.name, 'tom dale');
   });
 
   // FIXME - id is undefined
@@ -1154,7 +1154,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     const superVillains = await homePlanet.get('superVillains');
 
     assert.deepEqual(
-      superVillains.toArray().map((v: any) => v.get('id')),
+      [...superVillains].map((v: any) => v.id),
       ['1']
     );
   });

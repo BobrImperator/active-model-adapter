@@ -10,6 +10,7 @@ import ActiveModelAdapter, {
   ActiveModelSerializer,
 } from 'active-model-adapter';
 import AdapterError from '@ember-data/adapter/error';
+import { StringTransform } from '@ember-data/serializer/transform';
 
 class Book extends Model {
   @attr('string')
@@ -31,6 +32,7 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
     this.owner.register('adapter:application', ApplicationAdapter);
     this.owner.register('serializer:application', ApplicationSerializer);
     this.owner.register('model:book', Book);
+    this.owner.register('transform:string', StringTransform);
   });
 
   hooks.afterEach(function () {
@@ -46,12 +48,14 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
       data: {
         type: 'book',
         id: '1',
-        name: 'Bossypants',
-        genre: 'Memoir',
+        attributes: {
+          name: 'Bossypants',
+          genre: 'Memoir',
+        },
       },
     });
 
-    const post = store.peekRecord('book', 1);
+    const post = store.peekRecord('book', '1');
 
     pretender.put('/books/1', function () {
       const headers = {};
@@ -67,13 +71,13 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
 
     post.setProperties({
       name: 'Yes, Please',
-      memoir: 'Comedy',
+      genre: 'Comedy',
     });
 
     try {
       await post.save();
-    } catch (e) {
-      assert.ok(e instanceof AdapterError);
+    } catch (e: any) {
+      assert.ok(e.isAdapterError, 'error is an adapter error');
 
       assert.equal(
         post.errors.errorsFor('name')[0].message,
