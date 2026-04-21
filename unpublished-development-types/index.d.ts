@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Type declarations for ember-data modules used by this addon.
 // ember-data 5.x has types in unstable-preview-types but they're
 // not exported via the main package entry points.

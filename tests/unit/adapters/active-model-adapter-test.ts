@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { ActiveModelAdapter } from 'active-model-adapter';
