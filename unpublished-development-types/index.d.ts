@@ -3,6 +3,11 @@
 // ember-data 5.x has types in unstable-preview-types but they're
 // not exported via the main package entry points.
 
+// ember-data/store re-export (used by demo-app/services/store.ts)
+declare module 'ember-data/store' {
+  export { default } from '@ember-data/store';
+}
+
 declare module '@ember-data/adapter/rest' {
   import type Owner from '@ember/owner';
 

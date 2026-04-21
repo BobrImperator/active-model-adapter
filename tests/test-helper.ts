@@ -8,7 +8,7 @@ import { setTesting } from '@embroider/macros';
 import { App, Router } from '../demo-app/app.gts';
 import { initialize as initActiveModel } from 'active-model-adapter/initializers/active-model-adapter';
 
-Router.location = 'none';
+Router.prototype.location = 'none';
 
 export function start() {
   setTesting(true);

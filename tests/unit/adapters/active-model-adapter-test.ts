@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
 /* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
@@ -49,7 +49,6 @@ module('Unit | Initializer | active-model-adapter', function (hooks) {
       responseText: JSON.stringify({ errors: { name: "can't be blank" } }),
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore parseErrorResponse is not documented via DefinitelyTyped yet
     const json = this.adapter.parseErrorResponse(jqXHR.responseText);
 
@@ -71,7 +70,6 @@ module('Unit | Initializer | active-model-adapter', function (hooks) {
       url: '/posts/1',
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore parseErrorResponse is not documented via DefinitelyTyped yet
     const json = this.adapter.parseErrorResponse(jqXHR.responseText);
 

@@ -1,6 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-/* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
+/* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import Pretender from 'pretender';
@@ -51,14 +51,12 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
       data: {
         type: 'book',
         id: '1',
-        attributes: {
-          name: 'Bossypants',
-          genre: 'Memoir',
-        },
+        name: 'Bossypants',
+        genre: 'Memoir',
       },
     });
 
-    const post = store.peekRecord('book', '1');
+    const post = store.peekRecord('book', 1);
 
     pretender.put('/books/1', function () {
       const headers = {};
@@ -74,13 +72,13 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
 
     post.setProperties({
       name: 'Yes, Please',
-      genre: 'Comedy',
+      memoir: 'Comedy',
     });
 
     try {
       await post.save();
-    } catch (e: any) {
-      assert.ok(e.isAdapterError, 'error is an adapter error');
+    } catch (e) {
+      assert.ok(e instanceof AdapterError);
 
       assert.equal(
         post.errors.errorsFor('name')[0].message,

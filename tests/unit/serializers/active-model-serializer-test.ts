@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
 /* eslint-disable prettier/prettier, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unused-vars */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
@@ -148,10 +148,10 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     store.push({
       data: {
         type: 'user',
-        id: '1',
+        id: 1,
       },
     });
-    const user = store.peekRecord('user', '1') as User;
+    const user = store.peekRecord('user', 1) as User;
 
     pretender.put('/users/1', function () {
       const response = {
