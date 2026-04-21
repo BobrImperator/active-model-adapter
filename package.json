@@ -2,6 +2,7 @@
   "name": "active-model-adapter",
   "version": "4.0.1",
   "description": "Adapters and Serializers for Rails's ActiveModel::Serializers",
+  "packageManager": "pnpm@10.33.0",
   "keywords": [
     "ember-addon"
   ],
