@@ -53,13 +53,7 @@
     "@ember-data/adapter": ">=4.12.0",
     "@ember-data/model": ">=4.12.0",
     "@ember-data/serializer": ">=4.12.0",
-    "@ember-data/store": ">=4.12.0",
-    "ember-data": ">=4.12.0"
-  },
-  "peerDependenciesMeta": {
-    "ember-data": {
-      "optional": true
-    }
+    "@ember-data/store": ">=4.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -8,12 +8,10 @@ import { inject as service } from '@ember/service';
 import { dasherize } from '@ember/string';
 import { isNone } from '@ember/utils';
 import type { AnyObject } from './index.ts';
-// eslint-disable-next-line ember/use-ember-data-rfc-395-imports
-import DS from 'ember-data';
- 
+import type { Snapshot } from '@ember-data/legacy-compat';
 import type ModelRegistry from 'ember-data/types/registries/model';
 
-type ModelKeys<K> = Exclude<keyof K, keyof DS.Model>;
+type ModelKeys<K> = Exclude<keyof K, keyof Model>;
 type RelationshipsFor<K extends keyof ModelRegistry> = ModelKeys<
   ModelRegistry[K]
 >;
@@ -166,7 +164,7 @@ export default class ActiveModelSerializer extends RESTSerializer {
   /*
     Does not serialize hasMany relationships by default.
   */
-   
+
   serializeHasMany() {}
 
   /**
@@ -180,7 +178,7 @@ export default class ActiveModelSerializer extends RESTSerializer {
     Serializes a polymorphic type as a fully capitalized model name.
   */
   serializePolymorphicType<K extends keyof ModelRegistry>(
-    snapshot: DS.Snapshot<K>,
+    snapshot: Snapshot<K>,
     json: Payload,
     relationship: RelationshipMeta<K>
   ): void {

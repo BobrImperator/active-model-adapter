@@ -78,6 +78,14 @@ declare module '@ember-data/model' {
   export function hasMany(modelName: string, options?: Record<string, unknown>): PropertyDecorator;
 }
 
+declare module '@ember-data/legacy-compat' {
+  export class Snapshot<K = unknown> {
+    id: string | null;
+    modelName: string;
+    belongsTo(key: string | symbol): Snapshot | null;
+  }
+}
+
 declare module 'ember-data' {
   import Model from '@ember-data/model';
 
