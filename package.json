@@ -101,7 +101,6 @@
     "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^16.1.0",
-    "miragejs": "^0.1.48",
     "pretender": "^3.4.3",
     "prettier": "^3.4.2",
     "prettier-plugin-ember-template-tag": "^2.0.4",
