@@ -16,6 +16,7 @@ import babelParser from '@babel/eslint-parser/experimental-worker';
 import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import prettier from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import ember from 'eslint-plugin-ember/recommended';
 import importPlugin from 'eslint-plugin-import';
 import n from 'eslint-plugin-n';
@@ -36,6 +37,7 @@ export default defineConfig([
   globalIgnores(['dist/', 'dist-*/', 'declarations/', 'coverage/', '!**/.*']),
   js.configs.recommended,
   prettier,
+  prettierPlugin,
   ember.configs.base,
   ember.configs.gjs,
   ember.configs.gts,

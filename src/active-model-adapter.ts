@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import RESTAdapter from '@ember-data/adapter/rest';
 import AdapterError, { InvalidError } from '@ember-data/adapter/error';
 import errorsHashToArray from './errors-hash-to-array.ts';

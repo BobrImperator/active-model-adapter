@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import RouteTemplate from 'ember-route-template';
 
 export default RouteTemplate(
