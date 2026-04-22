@@ -1,17 +1,18 @@
+/* eslint-disable prettier/prettier */
 import { module, test } from 'qunit';
 import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import Pretender from 'pretender';
 
-let pretender: Pretender;
+let pretender;
 
-module('Acceptance | smoke test', function (hooks) {
+module('Acceptance | smoke test', function(hooks) {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach(function () {
-    pretender = new Pretender(function () {});
+  hooks.beforeEach(function() {
+    pretender = new Pretender(function() {});
 
-    pretender.get('/cars', function () {
+    pretender.get('/cars', function() {
       return [
         200,
         { 'Content-Type': 'application/json' },
@@ -25,11 +26,11 @@ module('Acceptance | smoke test', function (hooks) {
     });
   });
 
-  hooks.afterEach(function () {
+  hooks.afterEach(function() {
     pretender.shutdown();
   });
 
-  test('visiting /', async function (assert) {
+  test('visiting /', async function(assert) {
     await visit('/');
 
     assert.dom('li').exists({ count: 2 });
