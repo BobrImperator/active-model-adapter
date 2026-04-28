@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
-/* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument */
+/* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import Pretender from 'pretender';
@@ -30,7 +30,7 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
-     
+
     pretender = new Pretender(function () {});
     this.owner.register('adapter:application', ApplicationAdapter);
     this.owner.register('serializer:application', ApplicationSerializer);

@@ -11,6 +11,7 @@ export class App extends EmberApp {
   modules = {
     './router': Router,
     './initializers/active-model-adapter': activeModelInitializer,
+    ...import.meta.glob('./transforms/**/*', { eager: true }),
     ...import.meta.glob('./adapters/**/*', { eager: true }),
     ...import.meta.glob('./serializers/**/*', { eager: true }),
     ...import.meta.glob('./services/**/*', { eager: true }),

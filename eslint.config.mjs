@@ -34,7 +34,14 @@ const tsParserOptions = {
 };
 
 export default defineConfig([
-  globalIgnores(['dist/', 'dist-*/', 'declarations/', 'coverage/', '!**/.*']),
+  globalIgnores([
+    'dist/',
+    'dist-*/',
+    'declarations/',
+    'coverage/',
+    '!**/.*',
+    'classic-test-app/dist',
+  ]),
   js.configs.recommended,
   prettier,
   prettierPlugin,
@@ -97,7 +104,13 @@ export default defineConfig([
    * CJS node files
    */
   {
-    files: ['**/*.cjs'],
+    files: [
+      '**/*.cjs',
+      'classic-test-app/ember-cli-build.js',
+      'classic-test-app/testem.js',
+      'classic-test-app/config/targets.js',
+      'classic-test-app/config/environment.js',
+    ],
     plugins: {
       n,
     },

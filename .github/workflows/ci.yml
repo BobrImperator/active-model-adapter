@@ -51,10 +51,61 @@ jobs:
         run: pnpm build
       - name: Run Tests
         run: pnpm test
-      # For the Try Scenarios
       - id: set-matrix
         run: |
           echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+
+  classic-test:
+    name: 'Classic App Tests'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build and link addon
+        run: pnpm build && pnpm install --frozen-lockfile
+      - name: Run Classic App Tests
+        run: pnpm --filter classic-test-app test
+      - id: set-matrix
+        working-directory: classic-test-app
+        run: |
+          echo "matrix=$(pnpm -s dlx @embroider/try list)" >> $GITHUB_OUTPUT
+
+  classic-try-scenarios:
+    name: 'Classic - ${{ matrix.name }}'
+    runs-on: ubuntu-latest
+    needs: 'classic-test'
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.classic-test.outputs.matrix)}}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Apply Scenario
+        working-directory: classic-test-app
+        run: |
+          pnpm dlx @embroider/try apply ${{ matrix.name }}
+      - name: Install Dependencies
+        run: pnpm install --no-lockfile
+      - name: Build and link addon
+        run: pnpm build && pnpm install --no-lockfile
+      - name: Run Classic App Tests
+        run: pnpm --filter classic-test-app test
 
   try-scenarios:
     name: ${{ matrix.name }}

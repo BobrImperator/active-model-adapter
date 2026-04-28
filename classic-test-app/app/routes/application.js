@@ -1,10 +1,9 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import type Store from '@ember-data/store';
 import { hash } from 'rsvp';
 
-export default class Application extends Route {
-  @service('store') declare store: Store;
+export default class ApplicationRoute extends Route {
+  @service store;
 
   model() {
     return hash({

@@ -1,6 +1,11 @@
 import Pretender from 'pretender';
+import config from 'classic-test-app/config/environment';
 
-export default function startPretender() {
+export function initialize() {
+  if (config.environment === 'test') {
+    return;
+  }
+
   const server = new Pretender();
 
   server.get('/cars', function () {
@@ -54,6 +59,8 @@ export default function startPretender() {
       }),
     ];
   });
-
-  return server;
 }
+
+export default {
+  initialize,
+};

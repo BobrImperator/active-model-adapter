@@ -170,5 +170,59 @@ export default {
         },
       },
     },
+    {
+      name: 'ember-data-5.4',
+      npm: {
+        devDependencies: {
+          'ember-data': '~5.4.0',
+          '@ember-data/adapter': '~5.4.0',
+          '@ember-data/model': '~5.4.0',
+          '@ember-data/serializer': '~5.4.0',
+          '@ember-data/store': '~5.4.0',
+        },
+      },
+    },
+    {
+      name: 'ember-data-5.8',
+      npm: {
+        devDependencies: {
+          'ember-data': '~5.8.0',
+          '@ember-data/adapter': '~5.8.0',
+          '@ember-data/legacy-compat': '~5.8.0',
+          '@ember-data/model': '~5.8.0',
+          '@ember-data/serializer': '~5.8.0',
+          '@ember-data/store': '~5.8.0',
+          '@warp-drive/build-config': '~5.8.0',
+        },
+      },
+    },
+    {
+      name: 'ember-data-latest',
+      npm: {
+        devDependencies: {
+          'ember-data': 'latest',
+          '@ember-data/adapter': 'latest',
+          '@ember-data/legacy-compat': 'latest',
+          '@ember-data/model': 'latest',
+          '@ember-data/serializer': 'latest',
+          '@ember-data/store': 'latest',
+          '@warp-drive/build-config': 'latest',
+        },
+      },
+    },
+    {
+      name: 'ember-data-beta',
+      npm: {
+        devDependencies: {
+          'ember-data': 'beta',
+          '@ember-data/adapter': 'beta',
+          '@ember-data/legacy-compat': 'beta',
+          '@ember-data/model': 'beta',
+          '@ember-data/serializer': 'beta',
+          '@ember-data/store': 'beta',
+          '@warp-drive/build-config': 'beta',
+        },
+      },
+    },
   ],
 };

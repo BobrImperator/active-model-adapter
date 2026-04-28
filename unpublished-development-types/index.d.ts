@@ -125,6 +125,38 @@ declare module 'ember-data/types/registries/serializer' {
   }
 }
 
+declare module 'rsvp' {
+  export function hash<T extends Record<string, unknown>>(
+    promises: T,
+  ): Promise<{ [K in keyof T]: Awaited<T[K]> }>;
+}
+
+declare module '@ember-data/serializer/transform' {
+  export class BooleanTransform {
+    deserialize(serialized: unknown, options?: Record<string, unknown>): boolean | null;
+    serialize(deserialized: unknown, options?: Record<string, unknown>): boolean | null;
+    static create(): BooleanTransform;
+  }
+
+  export class DateTransform {
+    deserialize(serialized: unknown, options?: Record<string, unknown>): Date | null | undefined;
+    serialize(date: unknown, options?: Record<string, unknown>): string | null;
+    static create(): DateTransform;
+  }
+
+  export class NumberTransform {
+    deserialize(serialized: unknown, options?: Record<string, unknown>): number | null;
+    serialize(deserialized: unknown, options?: Record<string, unknown>): number | null;
+    static create(): NumberTransform;
+  }
+
+  export class StringTransform {
+    deserialize(serialized: unknown, options?: Record<string, unknown>): string | null;
+    serialize(deserialized: unknown, options?: Record<string, unknown>): string | null;
+    static create(): StringTransform;
+  }
+}
+
 declare module 'ember-strict-application-resolver' {
   import type Application from '@ember/application';
 
