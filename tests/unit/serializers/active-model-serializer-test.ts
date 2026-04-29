@@ -1,17 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
+/* eslint-disable prettier/prettier, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unused-vars */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import ActiveModelAdapter, {
   ActiveModelSerializer,
 } from 'active-model-adapter';
-import { TestContext } from 'ember-test-helpers';
+import type { TestContext } from '@ember/test-helpers';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import DS from 'ember-data';
 import Pretender from 'pretender';
 import type Store from '@ember-data/store';
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { resolve } from 'rsvp';
-// eslint-disable-next-line ember/use-ember-data-rfc-395-imports
+ 
 import type ModelRegistry from 'ember-data/types/registries/model';
 import { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
 
@@ -1055,7 +1057,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     ) as MediocreVillain;
     const assocMinions = await villain.evilMinions;
 
-    assert.equal(assocMinions.get('firstObject.name'), 'Harry');
+    assert.equal(assocMinions.at(0)?.name, 'Harry');
   });
 
   test('when using the DS.EmbeddedRecordsMixin, does not erase attributes for polymorphic embedded models', async function (this: Context, assert) {
@@ -1099,7 +1101,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     ) as MediocreVillain;
     const assocMinions = await villain.evilMinions;
 
-    assert.equal(assocMinions.get('firstObject.name'), 'tom dale');
+    assert.equal(assocMinions.at(0)?.name, 'tom dale');
   });
 
   // FIXME - id is undefined
@@ -1154,7 +1156,7 @@ module('Unit | Serializer | active model serializer', function (hooks) {
     const superVillains = await homePlanet.get('superVillains');
 
     assert.deepEqual(
-      superVillains.toArray().map((v: any) => v.get('id')),
+      [...superVillains].map((v: any) => v.id),
       ['1']
     );
   });

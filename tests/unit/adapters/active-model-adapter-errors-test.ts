@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - DefinitelyTyped types are stale, fix once ember-data ships stable types
+/* eslint-disable prettier/prettier, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import Pretender from 'pretender';
-import { TestContext } from 'ember-test-helpers';
+import type { TestContext } from '@ember/test-helpers';
 
 let pretender: Pretender;
 
@@ -10,6 +13,7 @@ import ActiveModelAdapter, {
   ActiveModelSerializer,
 } from 'active-model-adapter';
 import AdapterError from '@ember-data/adapter/error';
+import { StringTransform } from '@ember-data/serializer/transform';
 
 class Book extends Model {
   @attr('string')
@@ -26,11 +30,12 @@ module('Unit | Adapter | active model adapter errors test', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+
     pretender = new Pretender(function () {});
     this.owner.register('adapter:application', ApplicationAdapter);
     this.owner.register('serializer:application', ApplicationSerializer);
     this.owner.register('model:book', Book);
+    this.owner.register('transform:string', StringTransform);
   });
 
   hooks.afterEach(function () {
